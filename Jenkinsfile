@@ -23,6 +23,7 @@ pipeline {
 			echo 'Test Passed'
 		    }
 		    catch (err) {
+			echo 'Tests not passed!'
 			sh 'git checkout dev'
 			sh 'git reset --hard HEAD~1'
 			sh 'git push -f origin dev'
