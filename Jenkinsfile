@@ -21,12 +21,13 @@ pipeline {
 		    try {
 			sh 'python3 -m pytest tests'
 			echo 'Test Passed'
+			sh 'git checkout dev'
+			sh 'git commit -am "Updated version number"'
 		    }
 		    catch (err) {
 			echo 'Tests not passed!'
-			sh 'git checkout dev'
-			sh 'git reset --hard HEAD~1'
-			sh 'git push -f origin dev'
+			// sh 'git reset --hard HEAD~1'
+			// sh 'git push -f origin dev'
 			echo 'Test Failed ! Changes Reverted !'
 		    }
 		}
