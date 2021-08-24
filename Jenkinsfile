@@ -16,7 +16,7 @@ pipeline {
         }
 	stage('test') {
 	    steps {
-		sh 'source /home/yagmur/virtualenvs/python-general/bin/activate'
+		sh 'pip3 install pytest'
 		sh 'python3 -m pytest tests'
 		echo 'Test Passed'
 	    }
