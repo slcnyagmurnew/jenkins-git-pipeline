@@ -22,12 +22,12 @@ pipeline {
 		    try {
 			sh 'python3 -m pytest tests'
 			echo 'Test Passed'
-			echo 'Changes injected!'
 		    }
 		    catch (err) {
 			res = "fail"
 			echo 'Tests not passed!'
 			sh 'git checkout dev'
+			sh 'git pull'
 			sh 'git reset --soft HEAD~1'
 			echo 'Test Failed ! Changes Reverted !'
 		    }
